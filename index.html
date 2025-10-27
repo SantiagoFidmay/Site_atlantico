@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jânio Quadros - História e Legado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f1419;
+            color: #e8e6e3;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('/placeholder.svg?height=1080&width=1920');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(232, 230, 227, 0.1);
+        }
+        
+        nav.scrolled {
+            background: rgba(15, 20, 25, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4a574;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #d4a574;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #d4a574;
+            border-radius: 50%;
+            border: 3px solid #0f1419;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background: rgba(212, 165, 116, 0.3);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .image-container img {
+           width: 70%;              /* deixa a imagem 70% do tamanho original */
+           max-width: 400px;        /* limita a largura máxima */
+           height: auto;            /* mantém a proporção */
+           margin: 0 auto;          /* centraliza */
+           display: block;          /* garante centralização */
+           border-radius: 12px;     /* mantém o estilo arredondado */
+           transition: transform 0.5s ease;
+}
+.image-container1 img {
+           width: 70%;              /* deixa a imagem 70% do tamanho original */
+           max-width: 400px;        /* limita a largura máxima */
+           height: auto;            /* mantém a proporção */
+           margin: 0 auto;          /* centraliza */
+           display: block;          /* garante centralização */
+           border-radius: 12px;     /* mantém o estilo arredondado */
+           transition: transform 0.5s ease;
+}
+        
+        .card {
+            background: rgba(26, 31, 46, 0.6);
+            border: 1px solid rgba(232, 230, 227, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 165, 116, 0.4);
+            box-shadow: 0 10px 40px rgba(212, 165, 116, 0.1);
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(26, 31, 46, 0.8) 100%);
+            border-left: 4px solid #d4a574;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #d4a574;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .btn-primary {
+            background: #d4a574;
+            color: #0f1419;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #d4a574;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: #d4a574;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 165, 116, 0.3);
+        }
+        
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .image-container img {
+            transition: transform 0.5s ease;
+             max-width: 1000px; /* aumenta o tamanho da imagem */
+             width: 100%;
+             height: auto;
+             display: block;
+             margin: 0 auto;
+             border-radius: 12px;
+    
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background: rgba(15, 20, 25, 0.98);
+            backdrop-filter: blur(10px);
+            transition: right 0.4s ease;
+            z-index: 2000;
+            padding: 2rem;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e8e6e3;
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold" style="font-family: 'Playfair Display', serif; color: #d4a574;">
+                Jânio Quadros
+            </div>
+            
+            <div class="desktop-menu flex gap-8">
+                <a href="#inicio" class="nav-link text-sm uppercase tracking-wider hover:text-[#d4a574]">Início</a>
+                <a href="#biografia" class="nav-link text-sm uppercase tracking-wider hover:text-[#d4a574]">Biografia</a>
+                <a href="#ascensao" class="nav-link text-sm uppercase tracking-wider hover:text-[#d4a574]">Ascensão</a>
+                <a href="#governo" class="nav-link text-sm uppercase tracking-wider hover:text-[#d4a574]">Governo</a>
+                <a href="#renuncia" class="nav-link text-sm uppercase tracking-wider hover:text-[#d4a574]">Renúncia</a>
+                <a href="#legado" class="nav-link text-sm uppercase tracking-wider hover:text-[#d4a574]">Legado</a>
+            </div>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="flex justify-end mb-8">
+            <button onclick="toggleMenu()" class="text-3xl">&times;</button>
+        </div>
+        <div class="flex flex-col gap-6">
+            <a href="#inicio" onclick="toggleMenu()" class="text-lg hover:text-[#d4a574] transition">Início</a>
+            <a href="#biografia" onclick="toggleMenu()" class="text-lg hover:text-[#d4a574] transition">Biografia</a>
+            <a href="#ascensao" onclick="toggleMenu()" class="text-lg hover:text-[#d4a574] transition">Ascensão</a>
+            <a href="#governo" onclick="toggleMenu()" class="text-lg hover:text-[#d4a574] transition">Governo</a>
+            <a href="#renuncia" onclick="toggleMenu()" class="text-lg hover:text-[#d4a574] transition">Renúncia</a>
+            <a href="#legado" onclick="toggleMenu()" class="text-lg hover:text-[#d4a574] transition">Legado</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section flex items-center justify-center relative">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="fade-in">
+                <p class="text-[#d4a574] uppercase tracking-widest text-sm mb-4">22º Presidente do Brasil</p>
+                <h1 class="text-6xl md:text-8xl font-bold mb-6" style="font-family: 'Playfair Display', serif;">
+                    Jânio Quadros
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    O político da vassoura que prometeu varrer a corrupção e marcou a história brasileira com seu governo relâmpago de 7 meses
+                </p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <a href="#biografia" class="btn-primary">Conheça a História</a>
+                    <a href="#governo" class="border-2 border-[#e8e6e3] text-[#e8e6e3] px-8 py-3 rounded-md hover:bg-[#e8e6e3] hover:text-[#0f1419] transition">
+                        Seu Governo
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d4a574" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-[#1a1f2e]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="stat-number">1961</div>
+                    <p class="text-gray-400 mt-2">Ano da Posse</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">7</div>
+                    <p class="text-gray-400 mt-2">Meses de Governo</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">48%</div>
+                    <p class="text-gray-400 mt-2">Votação no 1º Turno</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stat-number">25/08</div>
+                    <p class="text-gray-400 mt-2">Data da Renúncia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biografia Section -->
+    <section id="biografia" class="py-24 bg-[#0f1419]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="fade-in mb-16">
+                <h2 class="section-title">Biografia</h2>
+                <p class="text-gray-400 mt-4 text-lg">A trajetória de um dos políticos mais controversos do Brasil</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="image-container1">
+                        <img src="./Janio_Quadros.png" 
+                             alt="Jânio Quadros" 
+                             class="w-full h-auto rounded-lg shadow-2xl">
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Primeiros Anos</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Jânio da Silva Quadros nasceu em 25 de janeiro de 1917, em Campo Grande, então parte do estado de Mato Grosso. 
+                            Filho de um farmacêutico e de uma professora, mudou-se para São Paulo ainda jovem, onde se formou em Direito 
+                            pela Universidade de São Paulo (USP) em 1939.
+                        </p>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Início na Política</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Iniciou sua carreira política como vereador em São Paulo em 1947, pelo Partido Democrata Cristão (PDC). 
+                            Sua ascensão foi meteórica: em 1950, foi eleito deputado estadual, e em 1953, tornou-se prefeito da capital paulista, 
+                            cargo que exerceu até 1955, quando foi eleito governador do estado de São Paulo.
+                        </p>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Características Pessoais</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Conhecido por seu temperamento explosivo e estilo excêntrico, Jânio era um orador carismático que conquistava 
+                            multidões com discursos inflamados contra a corrupção. Seu símbolo de campanha, a vassoura, representava sua 
+                            promessa de "varrer" a corrupção do país.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ascensão Política -->
+    <section id="ascensao" class="py-24 bg-[#1a1f2e]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="fade-in mb-16">
+                <h2 class="section-title">Ascensão ao Poder</h2>
+                <p class="text-gray-400 mt-4 text-lg">O caminho até a presidência da República</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <div class="card fade-in">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#d4a574]">Prefeito de São Paulo</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Como prefeito (1953-1955), implementou medidas populares e combateu a corrupção, ganhando projeção nacional. 
+                        Sua gestão foi marcada por obras públicas e ações moralistas.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="text-4xl mb-4">🗳️</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#d4a574]">Governador de São Paulo</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Eleito governador em 1955 com votação expressiva, consolidou sua imagem de político honesto e eficiente. 
+                        Renunciou ao cargo em 1959 para se candidatar à presidência.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#d4a574]">Vitória Presidencial</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Em 1960, venceu as eleições presidenciais com 48% dos votos, derrotando o marechal Henrique Teixeira Lott. 
+                        Sua campanha foi marcada pelo slogan "Varre, varre vassourinha".
+                    </p>
+                </div>
+            </div>
+            
+            <div class="quote-box fade-in">
+                <p class="text-xl md:text-2xl mb-4">
+                    "Vim para varrer a corrupção. Vim para moralizar o Brasil."
+                </p>
+                <p class="text-[#d4a574] font-semibold">— Jânio Quadros, Campanha Presidencial de 1960</p>
+            </div>
+            
+            <div class="mt-16 fade-in">
+                <h3 class="text-3xl font-bold mb-8 text-[#d4a574]">Linha do Tempo da Ascensão</h3>
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <h4 class="text-xl font-bold mb-2">1947 - Vereador</h4>
+                        <p class="text-gray-300">Eleito vereador em São Paulo pelo PDC, iniciando sua carreira política.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="text-xl font-bold mb-2">1950 - Deputado Estadual</h4>
+                        <p class="text-gray-300">Eleito deputado estadual, ampliando sua influência política.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="text-xl font-bold mb-2">1953 - Prefeito de São Paulo</h4>
+                        <p class="text-gray-300">Assume a prefeitura da maior cidade do país, ganhando projeção nacional.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="text-xl font-bold mb-2">1955 - Governador de São Paulo</h4>
+                        <p class="text-gray-300">Eleito governador do estado mais rico e populoso do Brasil.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h4 class="text-xl font-bold mb-2">1960 - Presidente Eleito</h4>
+                        <p class="text-gray-300">Vence as eleições presidenciais com votação expressiva, tornando-se o 22º presidente do Brasil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governo Section -->
+    <section id="governo" class="py-24 bg-[#0f1419]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="fade-in mb-16">
+                <h2 class="section-title">O Governo</h2>
+                <p class="text-gray-400 mt-4 text-lg">31 de janeiro a 25 de agosto de 1961 - Sete meses que marcaram a história</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div class="space-y-8">
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Política Externa Independente</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Jânio adotou uma política externa independente, rompendo com o alinhamento automático aos Estados Unidos 
+                            durante a Guerra Fria. Restabeleceu relações diplomáticas com a União Soviética e condecorou Che Guevara 
+                            com a Ordem do Cruzeiro do Sul, causando grande polêmica.
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Aproximação com países do bloco socialista</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Defesa da autodeterminação dos povos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Busca por maior autonomia internacional</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Medidas Moralistas</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Ficou famoso por suas medidas moralistas e excêntricas, que incluíam proibições de brigas de galo, 
+                            uso de biquíni nas praias e corridas de cavalo em dias úteis. Essas ações, embora populares entre 
+                            setores conservadores, geraram críticas e ridicularização.
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Proibição de biquínis em concursos de beleza</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Combate às brigas de galo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Regulamentação de jogos e apostas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Política Econômica</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Na economia, Jânio enfrentou desafios significativos, incluindo alta inflação e déficit público. 
+                            Implementou medidas de austeridade e tentou controlar os gastos públicos, mas encontrou resistência 
+                            no Congresso e em setores da sociedade.
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Instrução 204 da SUMOC (desvalorização cambial)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Tentativa de controle da inflação</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Redução de subsídios ao trigo e petróleo</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Relações com o Congresso</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Jânio tinha uma relação conturbada com o Congresso Nacional. Seu estilo autoritário e suas decisões 
+                            unilaterais geraram atritos constantes com parlamentares, que se sentiam desprestigiados. Essa tensão 
+                            foi um dos fatores que contribuíram para sua renúncia.
+                        </p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Conflitos frequentes com lideranças políticas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Dificuldade em aprovar projetos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2">•</span>
+                                <span>Isolamento político progressivo</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote-box fade-in">
+                <p class="text-xl md:text-2xl mb-4">
+                    "Forças terríveis levantam-se contra mim e me intrigam ou infamam, até com a desculpa da colaboração."
+                </p>
+                <p class="text-[#d4a574] font-semibold">— Jânio Quadros, Carta de Renúncia, 25 de agosto de 1961</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renúncia Section -->
+    <section id="renuncia" class="py-24 bg-[#1a1f2e]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="fade-in mb-16">
+                <h2 class="section-title">A Renúncia</h2>
+                <p class="text-gray-400 mt-4 text-lg">O episódio mais controverso da política brasileira</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                <div class="fade-in">
+                    <div class="image-container">
+                        <img src="/segunda.jpeg" 
+                             alt="Congresso Nacional 1961" 
+                             
+                             class="w-full h-auto rounded-lg shadow-2xl">
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="fade-in">
+                        <h3 class="text-3xl font-bold mb-4 text-[#d4a574]">25 de Agosto de 1961</h3>
+                        <p class="text-gray-300 leading-relaxed text-lg mb-6">
+                            Após apenas sete meses de governo, Jânio Quadros surpreendeu o país ao apresentar sua renúncia 
+                            ao Congresso Nacional. A decisão chocou a nação e gerou uma das maiores crises políticas da 
+                            história republicana brasileira.
+                        </p>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h4 class="text-xl font-bold mb-3 text-[#d4a574]">Motivos Alegados</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Em sua carta de renúncia, Jânio alegou que "forças terríveis" se levantavam contra ele. 
+                            Mencionou pressões de grupos econômicos, políticos e até internacionais que impediam a 
+                            realização de seu programa de governo.
+                        </p>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h4 class="text-xl font-bold mb-3 text-[#d4a574]">Teorias e Especulações</h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Muitos historiadores acreditam que Jânio esperava que sua renúncia fosse rejeitada e que 
+                            o povo e as Forças Armadas o reconduzissem ao poder com plenos poderes. No entanto, 
+                            o Congresso aceitou prontamente a renúncia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in">
+                <div class="card text-center">
+                    <div class="text-5xl mb-4">⚖️</div>
+                    <h4 class="text-xl font-bold mb-3 text-[#d4a574]">Crise Institucional</h4>
+                    <p class="text-gray-300">
+                        A renúncia gerou uma grave crise, pois o vice-presidente João Goulart estava em viagem à China, 
+                        e setores militares se opunham à sua posse.
+                    </p>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="text-5xl mb-4">🏛️</div>
+                    <h4 class="text-xl font-bold mb-3 text-[#d4a574]">Solução Parlamentarista</h4>
+                    <p class="text-gray-300">
+                        Para resolver o impasse, foi adotado o sistema parlamentarista, reduzindo os poderes do presidente 
+                        e permitindo a posse de Goulart.
+                    </p>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="text-5xl mb-4">📜</div>
+                    <h4 class="text-xl font-bold mb-3 text-[#d4a574]">Impacto Histórico</h4>
+                    <p class="text-gray-300">
+                        A renúncia de Jânio é considerada um dos eventos que contribuíram para a instabilidade política 
+                        que culminou no golpe militar de 1964.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 fade-in">
+                <div class="bg-gradient-to-r from-[#d4a574]/20 to-transparent p-8 rounded-lg border-l-4 border-[#d4a574]">
+                    <h4 class="text-2xl font-bold mb-4 text-[#d4a574]">Curiosidade Histórica</h4>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Jânio Quadros é o presidente brasileiro que menos tempo permaneceu no cargo após tomar posse 
+                        (apenas 7 meses). Sua renúncia foi tão inesperada que muitos brasileiros inicialmente pensaram 
+                        tratar-se de um boato. A notícia foi confirmada apenas quando o presidente do Senado, Auro de Moura Andrade, 
+                        leu oficialmente a carta de renúncia no Congresso Nacional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legado Section -->
+    <section id="legado" class="py-24 bg-[#0f1419]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="fade-in mb-16">
+                <h2 class="section-title">Legado e Pós-Presidência</h2>
+                <p class="text-gray-400 mt-4 text-lg">O impacto duradouro de um governo breve</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div class="space-y-8">
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Retorno à Política</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Após a renúncia, Jânio tentou retornar à política em diversas ocasiões. Em 1985, foi eleito 
+                            prefeito de São Paulo, cargo que exerceu até 1988. Sua gestão foi marcada por polêmicas e 
+                            não teve o mesmo sucesso de suas administrações anteriores.
+                        </p>
+                        <div class="mt-4 p-4 bg-[#0f1419]/50 rounded">
+                            <p class="text-sm text-gray-400">
+                                <strong class="text-[#d4a574]">1985-1988:</strong> Prefeito de São Paulo pela segunda vez
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Últimos Anos</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Jânio Quadros faleceu em 16 de fevereiro de 1992, aos 75 anos, em São Paulo. Até o fim da vida, 
+                            manteve-se como uma figura controversa e enigmática da política brasileira, nunca revelando 
+                            completamente os motivos de sua renúncia em 1961.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Impacto Histórico</h3>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            O governo de Jânio Quadros, apesar de breve, teve impacto significativo na história brasileira:
+                        </p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2 text-xl">→</span>
+                                <span>Inaugurou uma política externa independente que influenciou governos posteriores</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2 text-xl">→</span>
+                                <span>Sua renúncia contribuiu para a crise que levou ao golpe de 1964</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2 text-xl">→</span>
+                                <span>Tornou-se símbolo do político carismático mas imprevisível</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#d4a574] mr-2 text-xl">→</span>
+                                <span>Seu estilo populista influenciou gerações de políticos brasileiros</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card fade-in">
+                        <h3 class="text-2xl font-bold mb-4 text-[#d4a574]">Avaliação Histórica</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Historiadores divergem sobre o legado de Jânio. Alguns o veem como um reformador frustrado 
+                            por forças conservadoras; outros, como um político oportunista que não soube lidar com as 
+                            responsabilidades do cargo. Sua figura permanece enigmática e fascinante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold mb-8 text-[#d4a574]">Curiosidades e Fatos Marcantes</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <h4 class="text-lg font-bold mb-2 text-[#d4a574]">🧹 A Vassoura</h4>
+                        <p class="text-gray-300 text-sm">
+                            O símbolo da vassoura se tornou icônico na política brasileira, representando a promessa de 
+                            combate à corrupção. Até hoje é usado por políticos que se apresentam como "renovadores".
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="text-lg font-bold mb-2 text-[#d4a574]">🎖️ Che Guevara</h4>
+                        <p class="text-gray-300 text-sm">
+                            A condecoração de Che Guevara causou enorme polêmica e foi um dos fatores que aumentaram 
+                            a oposição ao seu governo, especialmente entre setores conservadores e militares.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="text-lg font-bold mb-2 text-[#d4a574]">📝 Bilhetes</h4>
+                        <p class="text-gray-300 text-sm">
+                            Jânio era conhecido por governar através de bilhetes manuscritos, que enviava a ministros 
+                            e funcionários com ordens e determinações, muitas vezes sobre assuntos triviais.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="text-lg font-bold mb-2 text-[#d4a574]">🗳️ Votação Recorde</h4>
+                        <p class="text-gray-300 text-sm">
+                            Jânio foi eleito com cerca de 5,6 milhões de votos, a maior votação até então na história 
+                            do Brasil, demonstrando seu imenso apelo popular na época.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="text-lg font-bold mb-2 text-[#d4a574]">👔 Estilo Pessoal</h4>
+                        <p class="text-gray-300 text-sm">
+                            Conhecido por seu estilo simples e austero, Jânio frequentemente usava ternos amassados 
+                            e cultivava uma imagem de homem do povo, em contraste com a elite política da época.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 class="text-lg font-bold mb-2 text-[#d4a574]">📚 Professor</h4>
+                        <p class="text-gray-300 text-sm">
+                            Antes de entrar na política, Jânio foi professor de português, geografia e história, 
+                            experiência que contribuiu para suas habilidades como orador e comunicador.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 fade-in">
+                <div class="quote-box">
+                    <p class="text-xl md:text-2xl mb-4">
+                        "Jânio Quadros foi um meteoro na política brasileira: brilhou intensamente, mas por pouco tempo. 
+                        Seu governo relâmpago deixou mais perguntas do que respostas, e sua renúncia permanece como um 
+                        dos maiores enigmas da história política do Brasil."
+                    </p>
+                    <p class="text-[#d4a574] font-semibold">— Análise Histórica Contemporânea</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1f2e] py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4" style="font-family: 'Playfair Display', serif; color: #d4a574;">
+                        Jânio Quadros
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Um site dedicado à preservação da memória histórica de um dos períodos mais intrigantes 
+                        da política brasileira.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#d4a574]">Navegação</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-[#d4a574] transition">Início</a></li>
+                        <li><a href="#biografia" class="text-gray-400 hover:text-[#d4a574] transition">Biografia</a></li>
+                        <li><a href="#ascensao" class="text-gray-400 hover:text-[#d4a574] transition">Ascensão</a></li>
+                        <li><a href="#governo" class="text-gray-400 hover:text-[#d4a574] transition">Governo</a></li>
+                        <li><a href="#renuncia" class="text-gray-400 hover:text-[#d4a574] transition">Renúncia</a></li>
+                        <li><a href="#legado" class="text-gray-400 hover:text-[#d4a574] transition">Legado</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-[#d4a574]">Período Presidencial</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Posse: 31 de janeiro de 1961</li>
+                        <li>Renúncia: 25 de agosto de 1961</li>
+                        <li>Duração: 7 meses</li>
+                        <li>Vice-presidente: João Goulart</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500 text-sm">
+                    © 2025 Jânio Quadros - História e Legado. Site educacional e informativo.<br>
+                    
+                </p>
+                <p>By Santiago Fidmay</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in and timeline elements
+        document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (mobileMenu.classList.contains('active') && 
+                !mobileMenu.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
